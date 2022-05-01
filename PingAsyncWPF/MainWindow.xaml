@@ -1,0 +1,87 @@
+﻿<Window x:Class="PingAsyncWPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PingAsyncWPF"
+        mc:Ignorable="d"
+        Title="PingAsyncWPF" Height="450" Width="800">
+    <Grid>
+        
+        <!--Gridの幅・高さの定義-->
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!--pingを打つURLの入力窓-->
+        <StackPanel Orientation="Vertical"
+                    Grid.Row="0"
+                    Grid.Column="1"
+                    Width="Auto"
+                    Height="Auto"
+                    VerticalAlignment="Bottom"
+                    >
+                        
+            <Label x:Name="urlLabel"
+                   Content="ここにURLを入力"
+                   BorderThickness="0"
+                   FontSize="20"
+                   />
+
+            <TextBox x:Name="inputTextbox"               
+                 Width="400"
+                 Height="Auto"
+                 FontSize="20"
+                 BorderThickness="1"
+                 Grid.Row="1"
+                 Grid.Column="1"
+                 TextChanged="Input_URL_textChangedEventHandler"
+                   />
+
+        </StackPanel>
+
+        
+
+        <!--Pingに関するボタン-->
+        <StackPanel Orientation="Horizontal"
+                    Grid.Row="2"
+                    Grid.Column="1"
+                    Width="Auto"
+                    Height="Auto"
+                    >
+
+            <!--pingを打つボタン-->
+            <Button x:Name="pingSendAsync"
+                    Content="Send Ping"
+                    Margin="5"
+                    Width="188"
+                    Height="Auto"
+                    HorizontalAlignment="Center"
+                    FontSize="18"
+                    Click="SendPingAsync_Button_Click"
+                    />
+
+            <!--pingをキャンセルするボタン-->
+            <Button x:Name="pingCancelAsync"
+                    Content="Cancel"
+                    Margin="5"
+                    Width="188"
+                    Height="Auto"
+                    HorizontalAlignment="Right"
+                    FontSize="18"
+                    Click="CancelPingAsync_Button_Click"
+                    />
+
+        </StackPanel>
+
+    </Grid>
+</Window>
